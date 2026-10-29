@@ -39,6 +39,7 @@ def main():
                 next_state, reward, terminated, truncated, _ = env.step(action)
                 
                 done = terminated or truncated
+               
 
                 q_table = learn(state, action, next_state, reward, q_table)
 
@@ -70,8 +71,8 @@ def main():
 
 
 def learn(state, action, next_state, reward, q_table):
-    alpha = 0.1
-    gamma = 0.9
+    alpha = 0.1 #learning rate
+    gamma = 0.9 #discount factor - how much weight to save for future runs
 
     #find the highest Q value in the next state
     max_next_q = np.max(q_table[next_state])
